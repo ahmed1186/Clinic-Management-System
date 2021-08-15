@@ -38,7 +38,7 @@ void view_record(void)
         printf("Enter patient ID to view record (max is 255): ");
         scanf("%d", &patient_id);
     }
-    while(patient_id < 0 || patient_id > 255);
+    while(patient_id < 0 || patient_id > MAX_RECORDS);
 
     if(search_patients(patients_array, current_records_count, patient_id) == -1)
     {
@@ -138,13 +138,13 @@ void admin_add_new_patient(void)
         printf(" Enter new patient ID (max is 255): ");
         scanf("%d", &new_id);
     }
-    while(new_id < 0 || new_id > 255);
+    while(new_id < 0 || new_id > MAX_RECORDS);
     
     while(search_patients(patients_array, current_records_count, new_id) != -1)
     {
         printf(" A patient with the same ID already exists, Enter a different ID: ");
         scanf("%d", &new_id);
-        while(new_id < 0 || new_id > 255)
+        while(new_id < 0 || new_id > MAX_RECORDS)
         {
             printf(" Enter patient new ID (max is 255): ");
             scanf("%d", &new_id);
@@ -191,7 +191,7 @@ void admin_edit_patient_record(void)
         printf("\n Enter patient ID to edit a record: ");
         scanf("%d", &patient_id);
     }
-    while(patient_id < 0 || patient_id > 255);
+    while(patient_id < 0 || patient_id > MAX_RECORDS);
 
     if(search_patients(patients_array, current_records_count, patient_id) == -1)
     {
@@ -228,13 +228,13 @@ void admin_edit_patient_record(void)
             printf("   Enter patient new ID (max is 255): ");
             scanf("%d", &new_id);
         }
-        while(new_id < 0 || new_id > 255);
+        while(new_id < 0 || new_id > MAX_RECORDS);
         
         while(search_patients(patients_array, current_records_count, new_id) != -1)
         {
             printf("   A patient with the same ID already exists, Enter a different ID: ");
             scanf("%d", &new_id);
-            while(new_id < 0 || new_id > 255)
+            while(new_id < 0 || new_id > MAX_RECORDS)
             {
                 printf("   Enter patient new ID (max is 255): ");
                 scanf("%d", &new_id);
@@ -290,7 +290,7 @@ void admin_reserve_slot(void)
         printf(" Enter patient ID to reserve a slot: ");
         scanf("%d", &patient_id);
     }
-    while(patient_id < 0 || patient_id > 255);
+    while(patient_id < 0 || patient_id > MAX_RECORDS);
 
     if(search_patients(patients_array, current_records_count, patient_id) == -1)
     {
@@ -340,13 +340,13 @@ void admin_cancel_reservation(void)
         printf(" Enter patient ID to cancel a reservation: ");
         scanf("%d", &patient_id);
     }
-    while(patient_id < 0 || patient_id > 255);
+    while(patient_id < 0 || patient_id > MAX_RECORDS);
 
     while(search_patients(patients_array, current_records_count, patient_id) == -1)
     {
         printf(" No patient with the provided ID was found, Enter a correct ID: ");
         scanf("%d", &patient_id);
-        while(patient_id < 0 || patient_id > 255)
+        while(patient_id < 0 || patient_id > MAX_RECORDS)
         {
             printf(" Enter patient ID to cancel a reservation: ");
             scanf("%d", &patient_id);
@@ -444,7 +444,7 @@ int main(void)
 
                 if(admin_function == 1)
                 {
-                    if(current_records_count == 255)
+                    if(current_records_count == MAX_RECORDS)
                     {
                         printf("\n*Database is full, can't add new patients.*\n");
                     }
