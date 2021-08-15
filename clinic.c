@@ -383,6 +383,7 @@ int main(void)
     int mode = 0;
     int admin_function = 0;
     int user_function = 0;
+    int entered_password = 0;
 
     printf("Welcome to hospital system\n");
     printf("===========================\n");
@@ -402,6 +403,27 @@ int main(void)
 
         if(mode == 1)
         {
+               for(int i = 3; i > 0; i--)
+               {
+                   printf(" Enter admin password: ");
+                   scanf("%d", &entered_password);
+                   if(entered_password == default_admin_password)
+                   {
+                       break;
+                   }
+                   else
+                   {
+                       printf("Incorrect admin password\nYou have %d remaining attempts.\n", i - 1);
+                   }
+               }
+               if(entered_password != default_admin_password)
+               {
+                    printf("*Press any key to return*\n");
+                    fflush(stdin);
+                    if(getchar())
+                    continue;
+               }
+
             while(1)
             {
                 printf("\n---------------------------");
